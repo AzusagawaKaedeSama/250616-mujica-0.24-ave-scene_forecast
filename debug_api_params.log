@@ -1,0 +1,1151 @@
+{
+  "timestamp": "2025-06-09 14:49:25",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 14:49:25",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 14:49:51",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": false,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-07",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": false,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 14:50:46",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-07",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 14:51:14",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-09-01",
+    "forecastEndDate": "2024-09-30",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:07:21",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-10-01",
+    "forecastEndDate": "2024-10-03",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:07:49",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-10-01",
+    "forecastEndDate": "2024-10-07",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:08:22",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-08-01",
+    "forecastEndDate": "2024-08-07",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:08:58",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "forecastType": "load",
+    "startDate": "2024-03-01",
+    "endDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "rolling",
+    "interval": 15,
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:09:12",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "predictionType": "rolling",
+    "forecastType": "load",
+    "province": "上海",
+    "startDate": "2024-08-01",
+    "endDate": "2024-08-07",
+    "interval": 15,
+    "historicalDays": 15,
+    "realTimeAdjustment": false,
+    "calculateNetLoad": false,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ]
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:10:07",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "predictionType": "rolling",
+    "forecastType": "load",
+    "province": "上海",
+    "startDate": "2024-08-01",
+    "endDate": "2024-08-07",
+    "interval": 15,
+    "historicalDays": 15,
+    "realTimeAdjustment": false,
+    "calculateNetLoad": false,
+    "enablePidCorrection": true,
+    "pretrainDays": 3,
+    "windowSizeHours": 72,
+    "enableAdaptation": true,
+    "initialKp": 0.7,
+    "initialKi": 0.05,
+    "initialKd": 0.1
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:11:12",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "predictionType": "rolling",
+    "forecastType": "load",
+    "province": "上海",
+    "startDate": "2024-09-01",
+    "endDate": "2024-09-07",
+    "interval": 15,
+    "historicalDays": 15,
+    "realTimeAdjustment": false,
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:12:06",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "福建",
+    "forecastDate": "2024-09-01",
+    "forecastEndDate": "2024-09-07",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:14:12",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-09-01",
+    "forecastEndDate": "2024-09-07",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:14:45",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:14:45",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:23:07",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "forecastType": "load",
+    "startDate": "2024-03-01",
+    "endDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "rolling",
+    "interval": 15,
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:27:37",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:27:37",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:40:07",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": false,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-08-20",
+    "forecastEndDate": "2024-08-31",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": false,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:40:53",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-08-20",
+    "forecastEndDate": "2024-08-31",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:54:26",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 15:54:26",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 16:01:32",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 16:01:32",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 16:03:08",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 16:03:08",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 16:07:56",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "forecastType": "load",
+    "startDate": "2024-03-01",
+    "endDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "rolling",
+    "interval": 15,
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 17:38:09",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 17:38:42",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "predictionType": "rolling",
+    "forecastType": "load",
+    "province": "上海",
+    "startDate": "2024-03-01",
+    "endDate": "2024-03-02",
+    "interval": 15,
+    "historicalDays": 15,
+    "realTimeAdjustment": false,
+    "calculateNetLoad": false,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ]
+  }
+}
+
+{
+  "timestamp": "2025-06-09 17:53:25",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "predictionType": "rolling",
+    "forecastType": "load",
+    "province": "上海",
+    "startDate": "2024-03-01",
+    "endDate": "2024-03-02",
+    "interval": 15,
+    "historicalDays": 15,
+    "realTimeAdjustment": false,
+    "calculateNetLoad": false,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ]
+  }
+}
+
+{
+  "timestamp": "2025-06-09 17:54:00",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "predictionType": "rolling",
+    "forecastType": "load",
+    "province": "上海",
+    "startDate": "2024-09-01",
+    "endDate": "2024-09-08",
+    "interval": 15,
+    "historicalDays": 15,
+    "realTimeAdjustment": false,
+    "calculateNetLoad": false,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ]
+  }
+}
+
+{
+  "timestamp": "2025-06-09 17:54:59",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-09-01",
+    "forecastEndDate": "2024-09-07",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 17:55:24",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-09-01",
+    "forecastEndDate": "2024-09-30",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 18:06:26",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-09-01",
+    "forecastEndDate": "2024-09-30",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 18:07:49",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "predictionType": "rolling",
+    "forecastType": "load",
+    "province": "上海",
+    "startDate": "2024-09-01",
+    "endDate": "2024-09-08",
+    "interval": 15,
+    "historicalDays": 15,
+    "realTimeAdjustment": false,
+    "calculateNetLoad": false,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ]
+  }
+}
+
+{
+  "timestamp": "2025-06-09 18:14:56",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-09-01",
+    "forecastEndDate": "2024-09-30",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 18:15:03",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "predictionType": "rolling",
+    "forecastType": "load",
+    "province": "上海",
+    "startDate": "2024-09-01",
+    "endDate": "2024-09-30",
+    "interval": 15,
+    "historicalDays": 15,
+    "realTimeAdjustment": false,
+    "calculateNetLoad": false,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ]
+  }
+}
+
+{
+  "timestamp": "2025-06-09 18:17:07",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 18:17:07",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 18:17:39",
+  "api": "天气感知预测API (/api/weather-forecast)",
+  "weatherAware": true,
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "province": "上海",
+    "forecastDate": "2024-10-01",
+    "forecastEndDate": "2024-10-02",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": true,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 18:27:39",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 18:27:39",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 19:48:10",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 19:48:10",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "load",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "province": "上海",
+    "predictionType": "day-ahead",
+    "historicalDays": 15,
+    "modelType": "torch"
+  }
+}
+
+{
+  "timestamp": "2025-06-09 21:31:41",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "pv",
+  "predictionType": "rolling",
+  "all_params": {
+    "predictionType": "rolling",
+    "forecastType": "pv",
+    "province": "上海",
+    "startDate": "2024-03-01",
+    "endDate": "2024-03-02",
+    "interval": 15,
+    "historicalDays": 15,
+    "realTimeAdjustment": false,
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-09 21:32:02",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": false,
+  "forecastType": "pv",
+  "predictionType": "day-ahead",
+  "all_params": {
+    "forecastType": "pv",
+    "province": "上海",
+    "forecastDate": "2024-03-01",
+    "forecastEndDate": "2024-03-02",
+    "historicalDays": 15,
+    "interval": 15,
+    "weatherAware": false,
+    "weatherFeatures": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "wind_speed",
+      "wind_direction",
+      "precipitation",
+      "solar_radiation"
+    ],
+    "weatherDataPath": "",
+    "weatherModelDir": "",
+    "predictionType": "day-ahead",
+    "modelType": "torch",
+    "calculateNetLoad": false
+  }
+}
+
+{
+  "timestamp": "2025-06-11 17:17:19",
+  "api": "普通预测API (/api/predict)",
+  "weatherAware": "NOT_SET",
+  "forecastType": "load",
+  "predictionType": "rolling",
+  "all_params": {
+    "predictionType": "rolling",
+    "forecastType": "load",
+    "province": "上海",
+    "startDate": "2024-01-18",
+    "endDate": "2024-01-20",
+    "interval": 15,
+    "historicalDays": 15,
+    "realTimeAdjustment": false,
+    "calculateNetLoad": false,
+    "enablePidCorrection": true,
+    "pretrainDays": 3,
+    "windowSizeHours": 72,
+    "enableAdaptation": true,
+    "initialKp": 0.7,
+    "initialKi": 0.05,
+    "initialKd": 0.1
+  }
+}
+

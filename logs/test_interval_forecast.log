@@ -1,0 +1,86 @@
+2025-05-06 19:05:16,639 - tensorflow - INFO - Mixed precision compatibility check (mixed_float16): OK
+Your GPU will likely run quickly with dtype policy mixed_float16 as it has compute capability of at least 7.0. Your GPU: NVIDIA GeForce RTX 4060, compute capability 8.9
+2025-05-06 19:05:16,642 - __main__ - INFO - 成功导入区间预测函数
+2025-05-06 19:05:16,643 - __main__ - INFO - === 开始区间预测测试 ===
+2025-05-06 19:05:16,643 - __main__ - INFO - 开始测试区间预测: 上海, 2024-05-07, 方法=mean
+2025-05-06 19:05:16,643 - __main__ - INFO - 找到数据文件: data/timeseries_load_上海.csv
+2025-05-06 19:05:17,011 - __main__ - INFO - 区间预测成功完成，结果形状: (96, 3)
+2025-05-06 19:05:17,014 - __main__ - INFO - 预测结果前5行:
+                     point_forecast   lower_bound    upper_bound
+datetime                                                        
+2024-05-07 00:00:00   136970.372395  83630.468922  171290.277427
+2024-05-07 00:15:00   136970.372395  83630.468922  171290.277427
+2024-05-07 00:30:00   136970.372395  83630.468922  171290.277427
+2024-05-07 00:45:00   136970.372395  83630.468922  171290.277427
+2024-05-07 01:00:00   124290.222402  70950.318929  158610.127434
+2025-05-06 19:05:17,019 - __main__ - INFO - 预测结果后5行:
+                     point_forecast    lower_bound    upper_bound
+datetime                                                         
+2024-05-07 22:45:00   174618.045321  121278.141848  208937.950354
+2024-05-07 23:00:00   153383.127902  100043.224429  187703.032934
+2024-05-07 23:15:00   153383.127902  100043.224429  187703.032934
+2024-05-07 23:30:00   153383.127902  100043.224429  187703.032934
+2024-05-07 23:45:00   153383.127902  100043.224429  187703.032934
+2025-05-06 19:05:17,395 - __main__ - INFO - 测试图表已保存至: results/test/上海_load_2024-05-07_mean_20250506_190517.png
+2025-05-06 19:05:17,395 - __main__ - INFO - === 测试完成 ===
+2025-05-06 19:08:10,003 - tensorflow - INFO - Mixed precision compatibility check (mixed_float16): OK
+Your GPU will likely run quickly with dtype policy mixed_float16 as it has compute capability of at least 7.0. Your GPU: NVIDIA GeForce RTX 4060, compute capability 8.9
+2025-05-06 19:08:10,005 - __main__ - INFO - 成功导入区间预测函数
+2025-05-06 19:08:10,006 - __main__ - INFO - === 开始区间预测测试 ===
+2025-05-06 19:08:10,006 - __main__ - INFO - 开始测试区间预测: 上海, 2024-05-07, 方法=mean
+2025-05-06 19:08:10,006 - __main__ - INFO - 找到数据文件: data/timeseries_load_上海.csv
+2025-05-06 19:08:10,007 - scripts.forecast.interval_forecast_simple - INFO - 区间预测参数: 省份=上海, 日期=2024-05-07, 置信水平=0.9, 历史天数=14, 方法=mean
+2025-05-06 19:08:10,007 - scripts.forecast.interval_forecast_simple - INFO - 处理后的预测日期: 2024-05-07
+2025-05-06 19:08:10,009 - scripts.forecast.interval_forecast_simple - ERROR - 区间预测失败: No module named 'scripts.utils'
+Traceback (most recent call last):
+  File "D:\1-学习\14-code\250430-scene_forecast_upload_ver\scripts\forecast\interval_forecast_simple.py", line 840, in perform_simple_interval_forecast
+    from scripts.utils.data_loader import DataLoader
+ModuleNotFoundError: No module named 'scripts.utils'
+
+2025-05-06 19:08:10,010 - __main__ - ERROR - 区间预测失败，返回的结果为空
+2025-05-06 19:08:10,010 - __main__ - INFO - === 测试完成 ===
+2025-05-06 19:09:40,515 - tensorflow - INFO - Mixed precision compatibility check (mixed_float16): OK
+Your GPU will likely run quickly with dtype policy mixed_float16 as it has compute capability of at least 7.0. Your GPU: NVIDIA GeForce RTX 4060, compute capability 8.9
+2025-05-06 19:09:40,518 - __main__ - INFO - 成功导入区间预测函数
+2025-05-06 19:09:40,518 - __main__ - INFO - === 开始区间预测测试 ===
+2025-05-06 19:09:40,518 - __main__ - INFO - 开始测试区间预测: 上海, 2024-05-07, 方法=mean
+2025-05-06 19:09:40,519 - __main__ - INFO - 找到数据文件: data/timeseries_load_上海.csv
+2025-05-06 19:09:40,519 - scripts.forecast.interval_forecast_simple - INFO - 区间预测参数: 省份=上海, 日期=2024-05-07, 置信水平=0.9, 历史天数=14, 方法=mean
+2025-05-06 19:09:40,520 - scripts.forecast.interval_forecast_simple - INFO - 处理后的预测日期: 2024-05-07
+2025-05-06 19:09:40,522 - scripts.forecast.interval_forecast_simple - ERROR - 区间预测失败: 'DataLoader' object has no attribute 'load_data_from_file'
+Traceback (most recent call last):
+  File "D:\1-学习\14-code\250430-scene_forecast_upload_ver\scripts\forecast\interval_forecast_simple.py", line 845, in perform_simple_interval_forecast
+    data = data_loader.load_data_from_file(data_path)
+AttributeError: 'DataLoader' object has no attribute 'load_data_from_file'
+
+2025-05-06 19:09:40,523 - __main__ - ERROR - 区间预测失败，返回的结果为空
+2025-05-06 19:09:40,523 - __main__ - INFO - === 测试完成 ===
+2025-05-06 19:10:46,026 - tensorflow - INFO - Mixed precision compatibility check (mixed_float16): OK
+Your GPU will likely run quickly with dtype policy mixed_float16 as it has compute capability of at least 7.0. Your GPU: NVIDIA GeForce RTX 4060, compute capability 8.9
+2025-05-06 19:10:46,028 - __main__ - INFO - 成功导入区间预测函数
+2025-05-06 19:10:46,029 - __main__ - INFO - === 开始区间预测测试 ===
+2025-05-06 19:10:46,029 - __main__ - INFO - 开始测试区间预测: 上海, 2024-05-07, 方法=mean
+2025-05-06 19:10:46,030 - __main__ - INFO - 找到数据文件: data/timeseries_load_上海.csv
+2025-05-06 19:10:46,030 - scripts.forecast.interval_forecast_simple - INFO - 区间预测参数: 省份=上海, 日期=2024-05-07, 置信水平=0.9, 历史天数=14, 方法=mean
+2025-05-06 19:10:46,031 - scripts.forecast.interval_forecast_simple - INFO - 处理后的预测日期: 2024-05-07
+2025-05-06 19:10:46,073 - scripts.forecast.interval_forecast_simple - INFO - 已加载历史数据: 1345 条记录，区间: 2024-04-23 00:00:00 到 2024-05-07 00:00:00
+2025-05-06 19:10:46,399 - scripts.forecast.interval_forecast_simple - INFO - 历史误差统计: MAE=23359.78, RMSE=27765.41
+2025-05-06 19:10:46,428 - __main__ - INFO - 区间预测成功完成，结果形状: (96, 3)
+2025-05-06 19:10:46,432 - __main__ - INFO - 预测结果前5行:
+                     point_forecast   lower_bound    upper_bound
+datetime                                                        
+2024-05-07 00:00:00   136970.372395  83630.468922  171290.277427
+2024-05-07 00:15:00   136970.372395  83630.468922  171290.277427
+2024-05-07 00:30:00   136970.372395  83630.468922  171290.277427
+2024-05-07 00:45:00   136970.372395  83630.468922  171290.277427
+2024-05-07 01:00:00   124290.222402  70950.318929  158610.127434
+2025-05-06 19:10:46,436 - __main__ - INFO - 预测结果后5行:
+                     point_forecast    lower_bound    upper_bound
+datetime                                                         
+2024-05-07 22:45:00   174618.045321  121278.141848  208937.950354
+2024-05-07 23:00:00   153383.127902  100043.224429  187703.032934
+2024-05-07 23:15:00   153383.127902  100043.224429  187703.032934
+2024-05-07 23:30:00   153383.127902  100043.224429  187703.032934
+2024-05-07 23:45:00   153383.127902  100043.224429  187703.032934
+2025-05-06 19:10:46,816 - __main__ - INFO - 测试图表已保存至: results/test/上海_load_2024-05-07_mean_20250506_191046.png
+2025-05-06 19:10:46,817 - __main__ - INFO - === 测试完成 ===

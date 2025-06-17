@@ -1,0 +1,25 @@
+2025-06-08 21:34:15,867 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-06-08 21:36:27,622 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-06-08 21:36:30,873 - fujian_forecast - INFO - 开始训练福建天气增强负荷预测模型
+2025-06-08 21:36:30,873 - fujian_forecast - INFO - 数据文件: data/timeseries_load_weather_fujian_20250608_170543.csv
+2025-06-08 21:36:30,873 - fujian_forecast - INFO - 序列长度: 96
+2025-06-08 21:36:30,873 - fujian_forecast - INFO - 预测长度: 24
+2025-06-08 21:36:30,873 - fujian_forecast - INFO - 峰值感知: 禁用
+2025-06-08 21:39:08,022 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-06-08 21:39:11,172 - fujian_forecast - INFO - 开始训练福建天气增强负荷预测模型
+2025-06-08 21:39:11,172 - fujian_forecast - INFO - 数据文件: data/timeseries_load_weather_fujian_20250608_170543.csv
+2025-06-08 21:39:11,173 - fujian_forecast - INFO - 序列长度: 96
+2025-06-08 21:39:11,173 - fujian_forecast - INFO - 预测长度: 24
+2025-06-08 21:39:11,173 - fujian_forecast - INFO - 峰值感知: 禁用
+2025-06-08 21:45:37,923 - fujian_forecast - INFO - 训练完成，用时 6.45 分钟
+2025-06-08 21:45:37,924 - fujian_forecast - INFO - 模型已保存到 saved_models 目录下
+2025-06-08 21:45:37,924 - fujian_forecast - INFO - 操作成功完成
+2025-06-08 22:06:44,123 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-06-08 22:06:47,311 - fujian_forecast - INFO - 开始训练福建天气增强负荷预测模型
+2025-06-08 22:06:47,311 - fujian_forecast - INFO - 数据文件: data/timeseries_load_weather_fujian_20250608_170543.csv
+2025-06-08 22:06:47,311 - fujian_forecast - INFO - 序列长度: 96
+2025-06-08 22:06:47,311 - fujian_forecast - INFO - 预测长度: 24
+2025-06-08 22:06:47,311 - fujian_forecast - INFO - 峰值感知: 禁用
+2025-06-08 22:12:24,266 - fujian_forecast - INFO - 训练完成，用时 5.62 分钟
+2025-06-08 22:12:24,266 - fujian_forecast - INFO - 模型已保存到 saved_models 目录下
+2025-06-08 22:12:24,266 - fujian_forecast - INFO - 操作成功完成

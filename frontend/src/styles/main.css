@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Womby';
+  src: url('/fonts/Womby.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ant YaHei';
+  src: url('/fonts/AntYaHei.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SourceHanSansSC-Bold';
+  src: url('/fonts/SOURCEHANSANSSC-BOLD-2.OTF') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* 然后是 @tailwind base; 等 */
+
+@layer base {
+  body {
+    font-family: theme('fontFamily.womby'), sans-serif;
+    @apply bg-white text-neutral-800 antialiased min-h-screen flex flex-col text-base;
+  }
+
+  a {
+    @apply text-primary hover:text-primary-dark transition-colors duration-150;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: theme('fontFamily.antYaHei'), theme('fontFamily.womby'), sans-serif;
+    @apply text-neutral-900;
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+  h1 {@apply lg:text-3xl;}
+  h2 {@apply lg:text-2xl;}
+
+  /* Styling for form elements on dark cards */
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    font-family: theme('fontFamily.womby'), sans-serif;
+    @apply block w-full px-3 py-2 text-neutral-100 bg-neutral-800 border border-neutral-600 rounded-md shadow-sm text-base;
+    @apply focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary;
+    @apply placeholder-neutral-400;
+    @apply mb-4; /* Consistent margin for form elements */
+  }
+  
+  select {
+    font-family: theme('fontFamily.sourceHanBold'), theme('fontFamily.womby'), sans-serif;
+    @apply appearance-none bg-neutral-800;
+     /* Custom arrow for select can be added using ::after pseudo-element or background image if needed */
+  }
+  
+  select option {
+    font-family: theme('fontFamily.sourceHanBold'), theme('fontFamily.womby'), sans-serif;
+    @apply bg-neutral-800 text-neutral-100 text-base;
+  }
+
+  input[type="checkbox"] {
+    @apply h-4 w-4 text-primary border-neutral-600 rounded bg-neutral-800 focus:ring-primary focus:ring-offset-neutral-900;
+    @apply mb-4;
+  }
+
+  label {
+    font-family: theme('fontFamily.sourceHanBold'), theme('fontFamily.womby'), sans-serif;
+    @apply text-neutral-300 block mb-1 text-base;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    @apply filter invert brightness-100;
+     /* Simplified filter for better visibility on dark inputs */
+  }
+
+  input::placeholder, textarea::placeholder {
+    font-family: theme('fontFamily.sourceHanBold'), theme('fontFamily.womby'), sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    font-family: theme('fontFamily.sourceHanBold'), theme('fontFamily.womby'), sans-serif;
+    @apply bg-primary text-white py-2 px-4 rounded-lg shadow-md text-base;
+    @apply hover:bg-primary-dark transition-colors duration-150;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-75 focus:ring-offset-2 focus:ring-offset-neutral-900;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    font-family: theme('fontFamily.sourceHanBold'), theme('fontFamily.womby'), sans-serif;
+    @apply bg-neutral-600 text-neutral-100 py-2 px-4 rounded-lg shadow-md text-base;
+    @apply hover:bg-neutral-700 transition-colors duration-150;
+    @apply focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-opacity-75 focus:ring-offset-2 focus:ring-offset-neutral-900;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .loading-spinner {
+    border-top-color: theme('colors.primary.DEFAULT');
+    @apply animate-spin rounded-full border-4 border-neutral-700 h-10 w-10;
+  }
+
+  .content-card {
+    @apply p-6 bg-neutral-900 shadow-xl rounded-lg text-neutral-200;
+    @apply space-y-6;
+  }
+  .content-card h2, .content-card h3 {
+    font-family: theme('fontFamily.antYaHei'), theme('fontFamily.womby'), sans-serif;
+    @apply text-2xl text-neutral-100 mb-6;
+  }
+}
