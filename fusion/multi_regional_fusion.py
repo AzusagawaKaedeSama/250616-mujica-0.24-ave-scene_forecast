@@ -551,7 +551,7 @@ def example_usage():
     
     # 2. 加载区域预测数据
     json_files = {
-        '上海': 'results/interval_forecast/load/上海/interval_load_上海_2024-05-26_20250609_220219.json',
+        '上海': 'results/interval_forecast/load/上海/interval_load_上海_2024-05-26_20nineng_220219.json',
         '江苏': 'results/interval_forecast/load/江苏/interval_load_江苏_2024-05-26.json',
         '浙江': 'results/interval_forecast/load/浙江/interval_load_浙江_2024-05-26.json',
         '安徽': 'results/interval_forecast/load/安徽/interval_load_安徽_2024-05-26.json',

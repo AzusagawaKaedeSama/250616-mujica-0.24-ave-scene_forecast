@@ -1,0 +1,13 @@
+{
+  "weather_features": [
+    "temperature",
+    "humidity",
+    "pressure",
+    "wind_speed",
+    "wind_direction",
+    "precipitation",
+    "solar_radiation"
+  ],
+  "weather_dim": 7,
+  "model_type": "convtrans_weather"
+}

@@ -1,45 +1,185 @@
+# 配置pip全剧镜像源后可以安装
+# [global]
+# index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+# extra-index-url = http://mirrors.aliyun.com/pypi/simple/
+#                   https://mirrors.ustc.edu.cn/pypi/simple/
+#                   https://repo.huaweicloud.com/repository/pypi/simple/
+# trusted-host = pypi.tuna.tsinghua.edu.cn
+#                mirrors.aliyun.com
+#                mirrors.ustc.edu.cn
+#                repo.huaweicloud.com
+# timeout = 60
+# retries = 3
+
+# [install]
+# trusted-host = pypi.tuna.tsinghua.edu.cn
+#                mirrors.aliyun.com
+#                mirrors.ustc.edu.cn
+#                repo.huaweicloud.com
+
 # Web框架相关
 Flask==2.3.3
-flask-cors==4.0.0
-flask-caching==2.1.0
-gunicorn==21.2.0
+Flask-Cors==3.0.10
+Flask-Caching==2.0.1
+gunicorn
+
+
 
 # 数据处理和分析
-numpy==1.24.3
-pandas==2.0.3
-scipy==1.11.1
-
-# 深度学习框架
-torch==2.0.1
-torchvision==0.15.2
-torchaudio==2.0.2
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.11.4
 
 # 机器学习相关
-scikit-learn==1.3.0
-joblib==1.3.2
+scikit-learn==1.6.1
+joblib==1.4.2
+xgboost
+sktime==0.36.0
+scikit-base==0.12.0
 
 # 可视化
-matplotlib==3.7.2
-seaborn==0.12.2
+matplotlib==3.10.0
+seaborn==0.13.2
 
 # 时间序列分析
-statsmodels==0.14.0
+statsmodels==0.14.4
+
+# 深度学习增强库
+einops==0.8.1
+shap==0.47.1
+axial_positional_embedding==0.3.12
+CoLT5-attention==0.11.1
+local-attention==1.11.1
+product_key_memory==0.2.11
+reformer==0.1.3
+reformer-pytorch==1.4.4
+
+# TensorBoard和监控
+tensorboard==2.10.1
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.1
+
+# 数据处理工具
+openpyxl==3.1.5
+xlrd
+netCDF4==1.7.2
+xarray
+cdsapi==0.7.6
+ecmwf-datastores-client==0.1.0
+
+# 系统和工具库
+python-dateutil
+pytz
+requests==2.32.3
+holidays
+psutil
+click==8.1.8
+tqdm==4.67.1
+colorama==0.4.6
+filelock==3.17.0
+
+# 数值计算加速
+numba==0.61.2
+llvmlite==0.44.0
+
+# 其他依赖
+protobuf==3.19.6
+h5py==3.13.0
+pillow==11.1.0
+sympy==1.13.1
+networkx==3.4.2
+fsspec==2024.6.1
+cloudpickle==3.1.1
+patsy==1.0.1
+threadpoolctl==3.5.0
+
+# Web相关
+Jinja2==3.1.5
+MarkupSafe==3.0.2
+Werkzeug==3.1.3
+itsdangerous==2.2.0
+blinker==1.9.0
+cachelib==0.13.0
+
+# 认证和安全
+google-auth==2.38.0
+google-auth-oauthlib==0.4.6
+oauthlib==3.2.2
+requests-oauthlib==2.0.0
+pyasn1==0.6.1
+pyasn1_modules==0.4.1
+rsa==4.9
+
+# TensorFlow相关
+tensorflow-estimator==2.10.0
+tensorflow-io-gcs-filesystem==0.31.0
+keras-preprocessing==1.1.2
+google-pasta==0.2.0
+gast==0.4.0
+astunparse==1.6.3
+opt_einsum==3.4.0
+flatbuffers==25.2.10
+termcolor==2.5.0
+absl-py==2.1.0
+grpcio==1.70.0
+cachetools==5.5.2
+
+# 文档和报告生成
+weasyprint==65.1
+pydyf==0.11.0
+pyphen==0.17.2
+cssselect2==0.8.0
+tinycss2==1.4.0
+tinyhtml5==2.0.0
+webencodings==0.5.1
+zopfli==0.2.3.post1
+
+# 压缩和编码
+Brotli==1.1.0
+cffi==1.17.1
+pycparser==2.22
+
+# 时间和日期
+cftime==1.6.4.post1
+tzdata
 
 # 其他工具
-python-dateutil==2.8.2
-pytz==2023.3
-requests==2.31.0
-holidays==0.31
+attrs
+charset-normalizer==3.4.1
+certifi
+idna==3.10
+urllib3==2.3.0
+six
+wrapt==1.17.2
+typing_extensions==4.12.2
+packaging
+multiurl==0.3.5
+patool==4.0.0
+slicer==0.0.8
+holiday==1.0.0
+hyper-connections==0.1.15
 
-# 数据库和存储（如果需要）
-# sqlite3  # Python自带，无需安装
+# 字体和绘图
+fonttools==4.56.0
+contourpy==1.3.1
+cycler==0.12.1
+kiwisolver==1.4.8
+pyparsing==3.2.1
 
-# 系统工具
-psutil==5.9.5
+# Intel MKL (如果使用conda环境)
+# mkl-service==2.4.0
+# mkl_fft
+# mkl_random
+# numexpr
+# bottleneck 
 
-# 文件处理
-openpyxl==3.1.2
-xlrd==2.0.1
+# 核心深度学习框架
 
-# 日志和配置
-python-dotenv==1.0.0 
+tensorflow==2.10.0
+keras==2.10.0
+
+
+# 需要这样安装pip install torch==2.6.0+cu118 torchvision==0.21.0+cu118 torchaudio==2.6.0+cu118 --index-url https://download.pytorch.org/whl/cu118
+torch==2.6.0+cu118
+torchvision==0.21.0+cu118
+torchaudio==2.6.0+cu118
