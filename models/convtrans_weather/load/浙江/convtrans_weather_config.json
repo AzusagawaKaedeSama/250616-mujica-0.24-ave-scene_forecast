@@ -1,0 +1,1 @@
+{"seq_length": 96, "pred_length": 1, "batch_size": 32, "lr": 0.001, "epochs": 100, "patience": 10, "valley_weight": 1.5, "peak_weight": 10, "valley_hours": [0, 6], "peak_hours": [7, 22], "use_peak_loss": true}
