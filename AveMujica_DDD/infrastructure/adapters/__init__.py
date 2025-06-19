@@ -1,0 +1,1 @@
+# This file makes the 'infrastructure/adapters' directory a Python package. 
