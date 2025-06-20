@@ -72,11 +72,17 @@ class InMemoryWeatherScenarioRepository(IWeatherScenarioRepository):
         self.save(WeatherScenario(
             scenario_type=ScenarioType.MODERATE_NORMAL,
             description="温和正常天气",
-            uncertainty_multiplier=1.0
+            uncertainty_multiplier=1.0,
+            typical_features={"temperature": 20.0, "humidity": 60.0, "wind_speed": 4.0, "precipitation": 0.0},
+            power_system_impact="系统平稳运行，基准不确定性",
+            operation_suggestions="标准运行模式，常规备用容量配置"
         ))
         self.save(WeatherScenario(
             scenario_type=ScenarioType.EXTREME_HOT_HUMID,
             description="极端高温高湿",
-            uncertainty_multiplier=3.0
+            uncertainty_multiplier=3.0,
+            typical_features={"temperature": 35.0, "humidity": 85.0, "wind_speed": 3.0, "precipitation": 0.0},
+            power_system_impact="空调负荷极高，电网压力巨大，可能出现负荷激增",
+            operation_suggestions="全力运行发电机组，准备需求响应措施，监控线路温度"
         ))
         print("Default weather scenarios seeded in-memory.") 

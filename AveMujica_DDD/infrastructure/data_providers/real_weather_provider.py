@@ -32,7 +32,7 @@ class RealWeatherProvider(IWeatherDataProvider):
             '福建': 'fujian'
         }
         
-        print(f"RealWeatherProvider initialized with data directory: {data_base_dir}")
+# RealWeatherProvider 已初始化
 
     def get_weather_data_for_date(self, province: str, target_date: date) -> pd.DataFrame:
         """

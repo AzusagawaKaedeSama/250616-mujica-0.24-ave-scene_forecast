@@ -26,4 +26,6 @@ class ForecastDTO(BaseModel):
 
     class Config:
         # Pydantic v2 aribtrary_types_allowed is now a general config setting
-        arbitrary_types_allowed = True 
+        arbitrary_types_allowed = True
+        # 禁用保护命名空间以允许model_name字段
+        protected_namespaces = () 

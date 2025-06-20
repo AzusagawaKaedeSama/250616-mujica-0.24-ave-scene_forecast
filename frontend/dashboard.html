@@ -1359,7 +1359,7 @@
                     // 在控制台显示请求信息
                     console.log("发送区间预测请求:", requestBody);
                     
-                    fetch('/api/interval-forecast', {
+                    fetch(`${API_BASE_URL}/interval-forecast`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -2321,7 +2321,7 @@
             // 获取训练状态
             const fetchTrainingStatus = async (taskId) => {
                 try {
-                    const response = await fetch(`/api/training-status?taskId=${taskId}`);
+                    const response = await fetch(`${API_BASE_URL}/training-status?taskId=${taskId}`);
                     if (response.ok) {
                         const data = await response.json();
                         setTrainingStatus(data);

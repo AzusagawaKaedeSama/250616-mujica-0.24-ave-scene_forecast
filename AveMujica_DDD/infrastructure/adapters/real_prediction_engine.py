@@ -31,8 +31,7 @@ class RealPredictionEngine(IPredictionEngine):
         self.loaded_models = {}  # 缓存已加载的模型
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         
-        print(f"RealPredictionEngine initialized with device: {self.device}")
-        print(f"Models directory: {models_base_dir}")
+# RealPredictionEngine 已初始化
 
     def predict(
         self,

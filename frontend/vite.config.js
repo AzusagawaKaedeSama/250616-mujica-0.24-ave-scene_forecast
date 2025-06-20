@@ -8,10 +8,13 @@ export default defineConfig({
     postcss: './postcss.config.cjs' // <--- 显式指向我们的 PostCSS 配置文件
   },
   server: {
+    port: 5173,
+    host: '0.0.0.0',
     proxy: {
       '/api': {
         target: 'http://localhost:5001',
         changeOrigin: true,
+        secure: false,
       }
     }
   }

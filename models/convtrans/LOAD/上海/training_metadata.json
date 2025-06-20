@@ -1,0 +1,35 @@
+{
+  "task_id": "9d48b4a5-c173-4997-a54f-47dad1bce470",
+  "model_type": "convtrans",
+  "forecast_type": "LOAD",
+  "province": "上海",
+  "training_start": "2024-01-01",
+  "training_end": "2024-02-28",
+  "metrics": {
+    "final_loss": 0.3,
+    "best_val_loss": 0.25,
+    "mae": 0.2
+  },
+  "config": {
+    "seq_length": 96,
+    "pred_length": 1,
+    "batch_size": 32,
+    "lr": 0.001,
+    "epochs": 50,
+    "patience": 10,
+    "peak_hours": [
+      8,
+      20
+    ],
+    "valley_hours": [
+      0,
+      6
+    ],
+    "peak_weight": 2.5,
+    "valley_weight": 1.5,
+    "use_peak_loss": true,
+    "weather_features": null,
+    "quantiles": null
+  },
+  "created_at": "2025-06-20T18:28:35.309113"
+}
