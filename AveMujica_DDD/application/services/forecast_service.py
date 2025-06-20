@@ -41,12 +41,14 @@ class ForecastService:
     def create_day_ahead_load_forecast(
         self, 
         province: str, 
-        target_date: date,
+        start_date: date,
+        end_date: date,
         model_id: uuid.UUID,
-        historical_days: int = 7 # 新增参数
+        historical_days: int = 7
     ) -> ForecastDTO:
         """
         用例：创建日前负荷预测。
+        现在支持日期范围。
         """
         # 1. 获取模型
         model = self._model_repo.find_by_id(model_id)
@@ -54,25 +56,21 @@ class ForecastService:
             raise ValueError(f"ID为 {model_id} 的负荷预测模型不存在。")
 
         # 2. 获取包含历史和未来的数据
-        # 我们需要从dataProvider获取一个足够长的序列来进行特征工程
-        hist_start_date = target_date - timedelta(days=historical_days)
+        hist_start_date = start_date - timedelta(days=historical_days)
         
-        # 假设dataProvider能处理日期范围（我们需要扩展其接口）
         combined_data = self._weather_provider.get_weather_data_for_range(
-            province, hist_start_date, target_date
+            province, hist_start_date, end_date
         )
 
-        # 3. 调用预测引擎（它内部会处理特征工程）
+        # 3. 调用预测引擎
         point_forecast_series = self._prediction_engine.predict(model, combined_data)
         
-        # 4. 从返回的序列中只选择目标日期
-        # 使用日期范围来筛选，因为预测序列包含完整的datetime索引
-        target_date_start = datetime.combine(target_date, datetime.min.time())
-        target_date_end = datetime.combine(target_date, datetime.max.time())
+        # 4. 从返回的序列中只选择目标日期范围
+        target_date_start = datetime.combine(start_date, datetime.min.time())
+        target_date_end = datetime.combine(end_date, datetime.max.time())
         target_forecast_series = point_forecast_series.loc[target_date_start:target_date_end]
 
-        # 5. 识别场景并创建聚合
-        # (这部分逻辑可以简化，因为天气数据已经在特征工程中被使用了)
+        # 5. 识别场景并创建聚合 (使用整个范围的平均值)
         target_weather_data = combined_data.loc[target_date_start:target_date_end]
         weather_data_list = target_weather_data.to_dict('records')
         scenario = self._recognize_scenario(weather_data_list) 
@@ -149,4 +147,22 @@ class ForecastService:
                     lower_bound=p.lower_bound
                 ) for p in forecast.time_series
             ]
-        ) 
+        )
+
+    def _get_forecast_type_from_string(self, forecast_type_str: str) -> ForecastType:
+        """
+        从字符串获取ForecastType枚举值。
+        
+        Args:
+            forecast_type_str: 预测类型字符串 ('load', 'pv', 'wind')
+            
+        Returns:
+            对应的ForecastType枚举值
+        """
+        forecast_type_mapping = {
+            'load': ForecastType.LOAD,
+            'pv': ForecastType.PV,
+            'wind': ForecastType.WIND
+        }
+        
+        return forecast_type_mapping.get(forecast_type_str.lower(), ForecastType.LOAD) 

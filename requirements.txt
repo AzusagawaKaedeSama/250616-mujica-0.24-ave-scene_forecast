@@ -19,6 +19,7 @@
 
 # Web框架相关
 Flask==2.3.3
+pydantic==2.8.2
 Flask-Cors==3.0.10
 Flask-Caching==2.0.1
 gunicorn

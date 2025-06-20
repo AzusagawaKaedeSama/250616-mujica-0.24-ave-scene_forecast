@@ -1,28 +1,29 @@
-from dataclasses import dataclass
-import uuid
 from datetime import datetime
-from typing import List, Optional
+from uuid import UUID
+from typing import List
+from pydantic import BaseModel, Field
 
-@dataclass(frozen=True)
-class ForecastDataPointDTO:
+class ForecastDataPointDTO(BaseModel):
     """
-    单个预测数据点的DTO。
-    `frozen=True` 意味着它是不可变的，保证了数据的纯粹性。
+    预测时间序列数据点的数据传输对象。
+    继承自Pydantic的BaseModel以获得自动验证和序列化功能。
     """
     timestamp: datetime
     value: float
-    upper_bound: Optional[float]
-    lower_bound: Optional[float]
+    upper_bound: float
+    lower_bound: float
 
-@dataclass(frozen=True)
-class ForecastDTO:
+class ForecastDTO(BaseModel):
     """
-    用于向接口层返回预测结果的DTO。
-    它只包含数据，没有任何业务逻辑。
+    预测结果的数据传输对象。
     """
-    forecast_id: uuid.UUID
+    forecast_id: UUID
     province: str
     creation_time: datetime
     model_name: str
     scenario_type: str
-    time_series: List[ForecastDataPointDTO] 
+    time_series: List[ForecastDataPointDTO]
+
+    class Config:
+        # Pydantic v2 aribtrary_types_allowed is now a general config setting
+        arbitrary_types_allowed = True 

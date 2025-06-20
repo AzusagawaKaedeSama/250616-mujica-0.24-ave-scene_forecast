@@ -5,9 +5,9 @@ from typing import List
 
 class ForecastType(str, Enum):
     """预测的目标类型"""
-    LOAD = "负荷"
-    PV = "光伏"
-    WIND = "风电"
+    LOAD = "LOAD"   # 负荷预测
+    PV = "PV"       # 光伏预测
+    WIND = "WIND"   # 风电预测
 
 @dataclass
 class PredictionModel:

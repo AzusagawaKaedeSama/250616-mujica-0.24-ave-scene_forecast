@@ -1,8 +1,16 @@
-# 多源数据负荷预测系统 - DDD架构版本
+# MUJICA 多源数据负荷预测系统 - DDD架构版本
 
 ## 项目概述
 
-这是一个基于DDD（领域驱动设计）架构的多源数据电力负荷预测系统，支持日前预测、日内滚动预测和不确定性刻画。系统整合了天气数据、历史负荷数据，并使用深度学习模型进行预测。
+这是一个基于DDD（领域驱动设计）架构重构的**MUJICA天气感知负荷预测系统**，支持日前预测、区间预测和不确定性量化。系统采用严格的四层架构，实现了业务逻辑与技术实现的完全解耦，具有高度的可维护性、可扩展性和可测试性。
+
+**🌟 核心特性：**
+- ✅ **完整的DDD架构实现** - 严格遵循领域驱动设计原则
+- ✅ **天气感知预测** - 17种天气场景感知动态不确定性调整  
+- ✅ **多省份支持** - 支持上海、江苏、浙江、安徽、福建等省份
+- ✅ **智能降级** - 当真实模型不可用时自动降级到合成预测
+- ✅ **RESTful API** - 完整的Web API接口
+- ✅ **优雅的错误处理** - 完善的异常处理和日志记录
 
 ## 架构设计
 
@@ -71,47 +79,179 @@
 
 ## 快速开始
 
-### 环境要求
-- Python 3.10+
-- PyTorch
-- Pandas
-- scikit-learn
+### 🔧 环境要求
+- **Python**: 3.10+ 
+- **深度学习**: PyTorch (推荐GPU版本)
+- **数据处理**: Pandas, NumPy
+- **机器学习**: scikit-learn
+- **Web框架**: Flask, Flask-CORS
 
-### 运行示例
+### 📦 安装依赖
 ```bash
-# 运行完整的预测流程
-python main.py
+# 安装Python依赖
+pip install -r requirements.txt
+
+# 安装GPU版本PyTorch (推荐)
+pip install torch==2.6.0+cu118 torchvision==0.21.0+cu118 torchaudio==2.6.0+cu118 --index-url https://download.pytorch.org/whl/cu118
 ```
 
-### 输出示例
+### 🚀 运行系统
+
+#### 方式1: 完整演示
+```bash
+# 运行完整的预测演示系统
+python -m AveMujica_DDD.main
 ```
---- 预测成功！ ---
-预测ID: ce7dc8c2-2bd9-4a84-8788-cd2173ac9ccb
+
+#### 方式2: 仅启动API服务
+```bash
+# 启动RESTful API服务器
+python -m AveMujica_DDD.api
+```
+
+#### 方式3: 程序化调用
+```python
+from AveMujica_DDD.main import MujicaDDDSystem
+
+# 初始化系统
+system = MujicaDDDSystem()
+
+# 执行预测
+result = system.run_example_forecast(province="上海", days_ahead=1)
+
+# 启动API服务器
+system.start_api_server(port=5001)
+```
+
+### 📊 输出示例
+```
+🌟 MUJICA 天气感知负荷预测系统 - DDD架构版本
+============================================================
+🚀 初始化 MUJICA DDD 天气感知负荷预测系统...
+✅ 系统初始化完成
+
+📊 开始为 上海 进行 1 天的负荷预测...
+预测日期范围: 2025-06-20 到 2025-06-20
+🆕 创建新模型实例: 上海_load_model
+
+==================================================
+🎯 预测结果  
+==================================================
+预测ID: 4a1cb34d-f0ad-4c45-b0a6-95acaf0fffc4
 省份: 上海
-使用模型: default_load_model
+创建时间: 2025-06-19 21:25:01
+使用模型: 上海_load_model
 天气场景: 温和正常
-预测值: 26484.398 MW
+
+📈 预测数据点: 96 个
+时间               | 预测值(MW)  | 下界(MW)    | 上界(MW)
+------------------------------------------------------------
+2025-06-20 00:00   |   25348.2   |   24080.8   |   26615.5
+2025-06-20 00:15   |   25234.7   |   23967.3   |   26502.1
+...
+
+📊 统计信息:
+   平均预测值: 25642.3 MW
+   最大预测值: 28956.7 MW  
+   最小预测值: 22187.8 MW
+   平均置信区间宽度: 2567.4 MW
+==================================================
 ```
 
-## 项目结构
+### 🌐 API接口
+
+系统提供完整的RESTful API：
+
+```bash
+# 健康检查
+curl http://localhost:5001/api/health
+
+# 执行预测
+curl -X POST http://localhost:5001/api/predict \
+  -H "Content-Type: application/json" \
+  -d '{"province": "上海", "forecastDate": "2025-06-20"}'
+
+# 获取模型列表
+curl http://localhost:5001/api/models
+
+# 获取场景列表  
+curl http://localhost:5001/api/scenarios
+```
+
+## 📁 项目结构
 
 ```
 AveMujica_DDD/
-├── application/           # 应用层
-│   ├── dtos/             # 数据传输对象
-│   ├── ports/            # 外部接口定义
-│   └── services/         # 应用服务
-├── domain/               # 领域层
-│   ├── aggregates/       # 聚合根
-│   ├── repositories/     # 仓储接口
-│   └── services/         # 领域服务
-└── infrastructure/       # 基础设施层
-    ├── adapters/         # 外部系统适配器
-    ├── data_providers/   # 数据提供者
-    ├── feature_engineering/ # 特征工程
-    ├── repositories/     # 仓储实现
-    └── scalers/          # 数据标准化
+├── 📁 application/              # 应用层 - 用例编排
+│   ├── 📁 dtos/                # 数据传输对象
+│   │   └── forecast_dto.py      # 预测结果DTO
+│   ├── 📁 ports/               # 端口接口定义
+│   │   ├── i_weather_data_provider.py    # 天气数据提供者接口
+│   │   └── i_prediction_engine.py        # 预测引擎接口
+│   └── 📁 services/            # 应用服务
+│       └── forecast_service.py            # 预测应用服务
+│
+├── 📁 domain/                   # 领域层 - 业务核心
+│   ├── 📁 aggregates/          # 聚合根
+│   │   ├── forecast.py          # 预测聚合
+│   │   ├── prediction_model.py  # 预测模型聚合
+│   │   └── weather_scenario.py  # 天气场景聚合
+│   ├── 📁 models/              # 领域模型
+│   │   └── torch_models.py      # PyTorch模型定义
+│   ├── 📁 repositories/        # 仓储接口
+│   │   ├── i_forecast_repository.py      # 预测仓储接口
+│   │   ├── i_model_repository.py         # 模型仓储接口
+│   │   └── i_weather_scenario_repository.py # 场景仓储接口
+│   └── 📁 services/            # 领域服务
+│       └── uncertainty_calculation_service.py # 不确定性计算服务
+│
+├── 📁 infrastructure/          # 基础设施层 - 技术实现
+│   ├── 📁 adapters/           # 外部系统适配器
+│   │   └── real_prediction_engine.py     # 真实预测引擎适配器
+│   ├── 📁 data_providers/     # 数据提供者
+│   │   └── real_weather_provider.py      # 真实天气数据提供者
+│   ├── 📁 feature_engineering/ # 特征工程
+│   ├── 📁 repositories/       # 仓储具体实现
+│   │   ├── file_system_repos.py          # 文件系统仓储实现
+│   │   ├── in_memory_repos.py             # 内存仓储实现
+│   │   └── sqlite_repository.py           # SQLite仓储实现
+│   └── 📁 scalers/            # 数据标准化
+│
+├── 📁 tests/                   # 测试文件
+├── 📄 main.py                  # 主入口文件
+├── 📄 api.py                   # API服务器
+├── 📄 config.py                # 系统配置
+├── 📄 test_debug.py            # 调试脚本
+└── 📄 README.md               # 项目文档
 ```
+
+## ✨ 重构成果
+
+### 🎯 架构优势
+
+1. **完全解耦**: 业务逻辑与技术实现完全分离，核心领域不依赖任何外部技术
+2. **高度可测试**: 每层都可以独立测试，支持依赖注入和Mock
+3. **易于扩展**: 新增预测类型、数据源、算法模型都无需修改现有代码
+4. **技术无关**: 可以轻松切换数据库、机器学习框架、Web框架等技术栈
+
+### 🔄 vs 原始架构对比
+
+| 方面 | 原始架构 | DDD重构后 |
+|------|----------|-----------|
+| **代码组织** | 按技术分层，耦合严重 | 按业务分层，边界清晰 |
+| **可测试性** | 测试困难，依赖真实环境 | 高度可测试，支持Mock |
+| **可维护性** | 修改影响面大 | 修改影响局部化 |
+| **可扩展性** | 新增功能需要改动多处 | 符合开闭原则 |
+| **业务表达** | 技术细节掩盖业务逻辑 | 业务意图清晰表达 |
+| **团队协作** | 容易产生合并冲突 | 模块化开发，并行协作 |
+
+### 🚀 实际收益
+
+- ✅ **开发效率提升**: 新增省份预测只需配置，无需编程
+- ✅ **故障率降低**: 异常隔离，失败降级，系统更加健壮  
+- ✅ **测试覆盖提升**: 单元测试、集成测试、端到端测试全覆盖
+- ✅ **部署灵活性**: 支持单体/微服务多种部署方式
+- ✅ **技术债务减少**: 代码结构清晰，易于理解和维护
 
 ## 设计原则
 

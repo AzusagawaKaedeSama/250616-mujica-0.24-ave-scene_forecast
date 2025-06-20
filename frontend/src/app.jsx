@@ -9,6 +9,12 @@ import TrainingSettings from './components/TrainingSettings';
 import HistoricalResultsSettings from './components/HistoricalResultsSettings';
 import ScenarioAwareUncertaintyForecast from './components/ScenarioAwareUncertaintyForecast';
 import MetricsCard from './components/MetricsCard';
+// Import the new DayAheadTab component
+import DayAheadTab from './features/DayAhead/DayAheadTab';
+// Import the new IntervalForecastTab component
+import IntervalForecastTab from './features/IntervalForecast/IntervalForecastTab';
+// Import the new TrainingTab component
+import TrainingTab from './features/Training/TrainingTab';
 // 导入 API 方法
 import { 
   getProvinces, 
@@ -69,15 +75,6 @@ function App() {
   
   // 设置默认参数
   const [params, setParams] = useState({
-    dayAhead: {
-      forecastType: 'load',
-      forecastDate: DEFAULT_FORECAST_START_DATE,
-      forecastEndDate: DEFAULT_FORECAST_END_DATE,
-      province: DEFAULT_PROVINCES[0],
-      predictionType: 'day-ahead',
-      historicalDays: 15,
-      modelType: 'torch'
-    },
     rolling: {
       forecastType: 'load',
       startDate: DEFAULT_FORECAST_START_DATE,
@@ -87,15 +84,6 @@ function App() {
       interval: 15, // 默认滚动间隔为15分钟
       historicalDays: 15,
       modelType: 'torch'
-    },
-    interval: {
-      forecast_type: 'load',
-      forecast_date: DEFAULT_FORECAST_START_DATE,
-      forecast_end_date: DEFAULT_FORECAST_END_DATE,
-      province: DEFAULT_PROVINCES[0],
-      confidence_level: 0.9,
-      model_type: 'peak_aware', // 默认使用峰值感知模型
-      historical_days: 15
     },
     probabilistic: {
       forecastType: 'load',
@@ -121,15 +109,6 @@ function App() {
       historicalDays: 14,
       includeExplanations: true
     },
-    training: {
-      forecast_type: 'load',
-      train_start: DEFAULT_TRAIN_START_DATE,
-      train_end: DEFAULT_TRAIN_END_DATE,
-      province: DEFAULT_PROVINCES[0],
-      epochs: 100,
-      batch_size: 32,
-      train_prediction_type: 'deterministic'
-    },
     historical: {
       forecast_type: 'load',
       start_date: '2024-01-01',
@@ -146,11 +125,6 @@ function App() {
   
   const [availableProvinces, setAvailableProvinces] = useState(DEFAULT_PROVINCES);
   const [predictionMetrics, setPredictionMetrics] = useState(null); // State for overall metrics
-
-  // 添加一个全局任务状态跟踪对象
-  const [trainingTasksStatus, setTrainingTasksStatus] = useState({});
-  // 添加一个对象来存储每个任务的定时器ID
-  const [taskIntervals, setTaskIntervals] = useState({});
 
   // 获取可用省份列表，但默认值优先
   useEffect(() => {
@@ -179,155 +153,6 @@ function App() {
 
     fetchProvinces();
   }, []);
-
-  // 当标签页切换时加载数据 - 已禁用自动预测
-  /*
-  useEffect(() => {
-    // 只有特定标签页才自动加载数据
-    if (activeTab !== 'training' && activeTab !== 'scenarioUncertainty' && !initialDataLoaded[activeTab]) {
-      loadInitialData(activeTab);
-    }
-  }, [activeTab, initialDataLoaded]);
-  */
-
-  // 自动加载初始数据 - 已禁用自动预测
-  /*
-  const loadInitialData = async (tabKey) => {
-    // 如果已经加载过数据，不再重复加载
-    if (initialDataLoaded[tabKey]) return;
-  
-    // 设置为正在加载状态
-    setLoading(prev => ({ ...prev, [tabKey]: true }));
-    
-    try {
-      console.log(`自动加载${TABS[tabKey]}初始数据`);
-      
-      // 使用当前标签页的默认参数
-      const currentParams = params[tabKey];
-      
-      // 根据不同标签页类型调用不同的API
-      let apiResponse;
-      
-      switch(tabKey) {
-        case 'dayAhead':
-        case 'rolling':
-        case 'probabilistic':
-          apiResponse = await runPrediction(currentParams);
-          break;
-        
-        case 'interval':
-          apiResponse = await runIntervalForecast(currentParams);
-          break;
-        
-        case 'scenarios':
-          apiResponse = await recognizeScenarios(currentParams);
-          break;
-          
-        default:
-          throw new Error(`未知的标签类型: ${tabKey}`);
-      }
-      
-      console.log(`${TABS[tabKey]}初始数据加载完成:`, apiResponse);
-      
-      // 更新结果状态
-      setResults(prev => ({ ...prev, [tabKey]: apiResponse }));
-      
-      // 标记该标签页已加载初始数据
-      setInitialDataLoaded(prev => ({ ...prev, [tabKey]: true }));
-      
-      // 渲染图表
-      setTimeout(() => {
-        if (tabKey === 'interval') {
-          console.log('准备渲染区间预测图表，数据：', apiResponse);
-          
-          // 区间预测 API 直接返回 predictions，不包装在 data 中
-          if (apiResponse && apiResponse.predictions) {
-            const predictions = apiResponse.predictions;
-            console.log('预测数据示例：', predictions[0]);
-            
-            // 检查是否需要字段映射
-            const needsMapping = predictions.some(p => 
-              p.point_forecast === undefined && p.predicted !== undefined
-            );
-            
-            if (needsMapping) {
-              console.log('执行字段映射：predicted -> point_forecast');
-              predictions.forEach(p => {
-                if (p.point_forecast === undefined && p.predicted !== undefined) {
-                  p.point_forecast = p.predicted;
-                }
-              });
-            }
-            
-            // 传递整个 apiResponse 给渲染函数
-            renderIntervalForecastChart(apiResponse, `chart-${tabKey}`, currentParams.forecast_type);
-          } else {
-            console.error('区间预测数据结构不正确：', apiResponse);
-          }
-        } else if (tabKey !== 'scenarios' && tabKey !== 'training' && tabKey !== 'historical') {
-          console.log('准备渲染普通预测图表，数据：', apiResponse);
-          
-          // 普通预测需要检查是否有 data 包装
-          let chartData = apiResponse.data || apiResponse;
-          
-          if (chartData && chartData.predictions) {
-            const predictions = chartData.predictions;
-            const needsMapping = predictions.some(p => 
-              p.predicted === undefined && p.point_forecast !== undefined
-            );
-            
-            if (needsMapping) {
-              console.log('执行字段映射：point_forecast -> predicted');
-              predictions.forEach(p => {
-                if (p.predicted === undefined && p.point_forecast !== undefined) {
-                  p.predicted = p.point_forecast;
-                }
-              });
-            }
-          }
-          
-          renderForecastChart(chartData, `chart-${tabKey}`, currentParams.forecast_type || currentParams.forecastType);
-        }
-      }, 100);
-      
-      // 修复指标提取逻辑
-      if (apiResponse) {
-        let metrics = null;
-        
-        if (tabKey === 'interval') {
-          // 区间预测直接从根级别获取指标
-          metrics = apiResponse.metrics || apiResponse.interval_statistics || null;
-        } else {
-          // 其他预测类型优先从 data.metrics 获取指标
-          if (apiResponse.data && apiResponse.data.metrics) {
-            metrics = apiResponse.data.metrics;
-          } else if (apiResponse.metrics) {
-            metrics = apiResponse.metrics;
-          }
-          
-          // 如果还是没有，尝试从其他可能的位置获取
-          if (!metrics || Object.keys(metrics).length === 0) {
-            if (apiResponse.data && apiResponse.data.interval_statistics) {
-              metrics = {
-                ...apiResponse.data.interval_statistics,
-                ...metrics
-              };
-            }
-          }
-        }
-        
-        console.log('提取到的指标：', metrics);
-        setPredictionMetrics(metrics || null);
-      }
-      
-    } catch (err) {
-      console.error(`${TABS[tabKey]}初始数据加载失败:`, err);
-      setError(prev => ({ ...prev, [tabKey]: err.message }));
-    } finally {
-      setLoading(prev => ({ ...prev, [tabKey]: false }));
-    }
-  };
-  */
 
   const handleClearCacheApi = async () => {
     try {
@@ -364,7 +189,6 @@ function App() {
       }
       
       switch(tabKey) {
-        case 'dayAhead':
         case 'rolling':
         case 'probabilistic':
           // 检查是否启用了天气感知预测
@@ -395,53 +219,8 @@ function App() {
           }
           break;
         
-        case 'interval':
-          apiResponse = await runIntervalForecast(formattedParams);
-          break;
-        
         case 'scenarios':
           apiResponse = await recognizeScenarios(formattedParams);
-          break;
-        
-        case 'training':
-          apiResponse = await trainModel(formattedParams);
-          
-          // 训练相关逻辑改进...
-          if (apiResponse && apiResponse.task_id) {
-            const taskId = apiResponse.task_id;
-            console.log(`训练任务已启动，任务ID: ${taskId}`);
-            
-            try {
-              // 立即检查一次状态
-              await checkTrainingStatus(taskId);
-              
-              // 设置定期检查，并保存定时器ID
-              const intervalId = setInterval(() => {
-                checkTrainingStatus(taskId).catch(err => {
-                  console.warn(`检查训练状态出错 (${taskId}): ${err.message}`);
-                });
-              }, 5000);
-              
-              // 保存这个任务的定时器ID
-              setTaskIntervals(prev => ({
-                ...prev,
-                [taskId]: intervalId
-              }));
-              
-              // 返回任务ID，以便调用者可以使用
-              apiResponse.taskId = taskId;
-            } catch (statusErr) {
-              console.error(`初始状态检查失败: ${statusErr.message}`);
-              // 即使初始检查失败，仍然设置定时器尝试后续检查
-              const intervalId = setInterval(() => checkTrainingStatus(taskId), 5000);
-              setTaskIntervals(prev => ({
-                ...prev,
-                [taskId]: intervalId
-              }));
-            }
-          } else {
-            console.warn("训练API返回了成功响应，但没有提供任务ID");
-          }
           break;
         
         case 'historical':
@@ -484,7 +263,7 @@ function App() {
           } else {
             console.error('区间预测数据结构不正确：', apiResponse);
           }
-        } else if (tabKey !== 'scenarios' && tabKey !== 'training' && tabKey !== 'historical') {
+        } else if (tabKey !== 'scenarios' && tabKey !== 'historical') {
           console.log('准备渲染普通预测图表，数据：', apiResponse);
           
           // 普通预测需要检查是否有 data 包装
@@ -589,81 +368,6 @@ function App() {
     }
   };
 
-  // 检查训练状态
-  const checkTrainingStatus = async (taskId) => {
-    if (!taskId) {
-      console.error("无效的任务ID，无法检查训练状态");
-      return;
-    }
-    
-    // 检查任务是否已经完成或失败，如果是则不再发送请求
-    if (trainingTasksStatus[taskId] === 'completed' || trainingTasksStatus[taskId] === 'failed') {
-      console.log(`任务 ${taskId} 已经 ${trainingTasksStatus[taskId]}，跳过状态检查`);
-      return;
-    }
-    
-    console.log(`检查训练任务状态: ${taskId}`);
-    
-    try {
-      const status = await getTrainingStatus(taskId);
-      console.log(`获取到训练状态: `, status);
-      
-      setResults(prev => ({
-        ...prev,
-        training: {
-          ...status,
-          task_id: taskId
-        }
-      }));
-      
-      // 如果训练已完成或失败，停止检查
-      if (status.status === 'completed' || status.status === 'failed') {
-        console.log(`训练任务 ${taskId} ${status.status === 'completed' ? '已完成' : '失败'}`);
-        
-        // 更新任务状态跟踪对象
-        setTrainingTasksStatus(prev => ({
-          ...prev,
-          [taskId]: status.status
-        }));
-        
-        // 清除该任务的定时器
-        if (taskIntervals[taskId]) {
-          clearInterval(taskIntervals[taskId]);
-          setTaskIntervals(prev => {
-            const newIntervals = { ...prev };
-            delete newIntervals[taskId];
-            return newIntervals;
-          });
-        }
-      }
-    } catch (err) {
-      console.error(`获取训练状态失败 (${taskId}):`, err);
-      setError(prev => ({ ...prev, training: err.message }));
-      
-      // 如果是404错误（找不到任务），则停止检查
-      if (err.message && (err.message.includes("找不到") || err.message.includes("404"))) {
-        console.warn(`训练任务 ${taskId} 不存在，停止检查状态`);
-        
-        // 更新任务状态为失败
-        setTrainingTasksStatus(prev => ({
-          ...prev,
-          [taskId]: 'failed'
-        }));
-        
-        // 清除该任务的定时器
-        if (taskIntervals[taskId]) {
-          clearInterval(taskIntervals[taskId]);
-          setTaskIntervals(prev => {
-            const newIntervals = { ...prev };
-            delete newIntervals[taskId];
-            return newIntervals;
-          });
-        }
-      }
-      // 其他错误类型可能是临时的，继续检查
-    }
-  };
-
   const renderTabContent = () => {
     const commonProps = {
       availableProvinces, // 使用从 API 获取的省份列表
@@ -698,13 +402,13 @@ function App() {
     return (
       <>
         {/* Parameter Settings Components */}
-        {activeTab === 'dayAhead' && <ParameterSettings {...commonProps} initialParams={params.dayAhead} title="参数设置 - 日前预测" className={cardClassName} activeTabKey={activeTab}/>}
+        {activeTab === 'dayAhead' && <DayAheadTab availableProvinces={availableProvinces} />}
         {activeTab === 'rolling' && <RollingSettings {...commonProps} initialParams={params.rolling} title="参数设置 - 滚动预测" className={cardClassName} activeTabKey={activeTab}/>}
-        {activeTab === 'interval' && <IntervalSettings {...commonProps} initialParams={params.interval} title="参数设置 - 区间预测" className={cardClassName} activeTabKey={activeTab}/>}
+        {activeTab === 'interval' && <IntervalForecastTab availableProvinces={availableProvinces} />}
         {activeTab === 'probabilistic' && <ProbabilisticSettings {...commonProps} initialParams={params.probabilistic} title="参数设置 - 概率预测" className={cardClassName} activeTabKey={activeTab}/>}
         {activeTab === 'scenarios' && <ScenariosSettings {...commonProps} initialParams={params.scenarios} title="参数设置 - 场景识别" className={cardClassName} activeTabKey={activeTab}/>}
         {activeTab === 'scenarioUncertainty' && <ScenarioAwareUncertaintyForecast />}
-        {activeTab === 'training' && <TrainingSettings {...commonProps} initialParams={params.training} title="参数设置 - 模型训练" className={cardClassName} activeTabKey={activeTab}/>}
+        {activeTab === 'training' && <TrainingTab availableProvinces={availableProvinces} />}
         {activeTab === 'historical' && <HistoricalResultsSettings {...commonProps} initialParams={params.historical} title="历史结果查询" className={cardClassName} activeTabKey={activeTab}/>}
 
         {/* Loading Spinner */}
@@ -724,7 +428,7 @@ function App() {
 
         {/* Results Display Area (Chart and Metrics) */}
         {!loading[activeTab] && currentResults && 
-          (activeTab === 'dayAhead' || activeTab === 'rolling' || activeTab === 'probabilistic' || activeTab === 'interval') && (
+          (activeTab === 'rolling' || activeTab === 'probabilistic') && (
           <div className="mt-6 p-4 bg-neutral-800 rounded-lg border border-neutral-700 shadow-xl">
             {renderChartAndMetrics(activeTab, currentResults, currentApiParams)}
           </div>
@@ -822,64 +526,9 @@ function App() {
             </div>
           </div>
         )}
-
-        {/* Training Status Display */}
-        {!loading[activeTab] && currentResults && activeTab === 'training' && (
-          <div className="mt-6 p-4 bg-neutral-800 rounded-lg border border-neutral-700 shadow-xl">
-            <h3 className="text-xl font-medium text-neutral-100 mb-4">训练状态</h3>
-            <div className="bg-neutral-800 rounded-md p-4 space-y-4">
-              <div className="flex justify-between items-center">
-                <h4 className="text-lg font-medium text-neutral-100">训练进度:</h4>
-                <span className="text-neutral-100">{currentResults.progress || 0}%</span>
-              </div>
-              <div className="w-full bg-neutral-700 rounded-full h-2.5">
-                <div 
-                  className="bg-red-600 h-2.5 rounded-full" 
-                  style={{ width: `${currentResults.progress || 0}%` }}
-                ></div>
-              </div>
-              <div className="flex justify-between items-center">
-                <h4 className="text-lg font-medium text-neutral-100">当前轮次:</h4>
-                <span className="text-neutral-100">{currentResults.currentEpoch || 0}/{currentResults.totalEpochs || 100}</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <h4 className="text-lg font-medium text-neutral-100">预计完成时间:</h4>
-                <span className="text-neutral-100">{currentResults.eta || '计算中...'}</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <h4 className="text-lg font-medium text-neutral-100">状态:</h4>
-                <span className={`px-2 py-1 rounded text-sm ${
-                  currentResults.status === 'completed' ? 'bg-green-800 text-green-100' :
-                  currentResults.status === 'failed' ? 'bg-red-800 text-red-100' :
-                  'bg-yellow-800 text-yellow-100'
-                }`}>
-                  {currentResults.status === 'completed' ? '已完成' :
-                   currentResults.status === 'failed' ? '失败' :
-                   '训练中'}
-                </span>
-              </div>
-              {currentResults.error && (
-                <div className="mt-4 p-3 bg-red-900 bg-opacity-30 border border-red-800 rounded">
-                  <h4 className="text-red-400 font-medium">错误信息:</h4>
-                  <p className="text-red-300 text-sm mt-1">{currentResults.error}</p>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
       </>
     );
   };
-
-  // 在组件卸载时清理所有定时器
-  useEffect(() => {
-    return () => {
-      // 清理所有任务的定时器
-      Object.values(taskIntervals).forEach(intervalId => {
-        if (intervalId) clearInterval(intervalId);
-      });
-    };
-  }, [taskIntervals]);
 
   return (
     <div className="flex flex-col min-h-screen bg-black">
